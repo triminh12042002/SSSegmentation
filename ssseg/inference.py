@@ -118,7 +118,8 @@ class Inferencer():
             mask = np.zeros((pred.shape[0], pred.shape[1], 3), dtype=np.uint8)
             for clsid, color in enumerate(palette):
                 mask[pred == clsid, :] = np.array(color)[::-1]
-            image = image * 0.5 + mask * 0.5
+            # image = image * 0.5 + mask * 0.5
+            image = mask
             image = image.astype(np.uint8)
             if cmd_args.outputdir:
                 cv2.imwrite(os.path.join(cmd_args.outputdir, imagepath.split('/')[-1].split('.')[0] + '.png'), image)
