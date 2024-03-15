@@ -64,7 +64,12 @@ class Inferencer():
         cfg.SEGMENTOR_CFG['dataset']['evalmode'] = 'server'
         dataset = BuildDataset(mode='TEST', logger_handle=logger_handle, dataset_cfg=cfg.SEGMENTOR_CFG['dataset'])
         # build palette
-        palette = dataset.palette
+        # palette = dataset.palette
+        palette = [
+            (0, 0, 0), (128, 0, 0), (255, 0, 0), (0, 85, 0), (170, 0, 51), (255, 85, 0), (0, 0, 85),
+            (0, 119, 221), (85, 85, 0), (0, 85, 85), (85, 51, 0), (52, 86, 128), (0, 128, 0), (0, 0, 255), 
+            (51, 170, 221), (0, 255, 255), (85, 255, 170), (170, 255, 85), (255, 255, 0), (255, 170, 0)
+        ]
         # load ckpts
         cmd_args.local_rank = 0
         ckpts = loadckpts(cmd_args.ckptspath)
